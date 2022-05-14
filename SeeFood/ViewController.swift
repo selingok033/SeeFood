@@ -12,6 +12,7 @@ import Vision
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var predictionLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     
@@ -48,7 +49,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 fatalError("Model failed to process image.")
             }
             print(results)
-
+            if let highestConfidenceResult = results.first {
+                if highestConfidenceResult.identifier.contains("hotdog"){
+                    self.navigationItem.title = "Hotdog!"
+                    self.predictionLabel.text = "Probability: \(String(highestConfidenceResult.confidence))"
+                } else {
+                    self.navigationItem.title = "Not Hotdog!"
+                    self.predictionLabel.text = "It can be \(highestConfidenceResult.identifier) with \(String(highestConfidenceResult.confidence)) probability!"
+                }
+            }
         }
         
         let handler = VNImageRequestHandler(ciImage: image)
