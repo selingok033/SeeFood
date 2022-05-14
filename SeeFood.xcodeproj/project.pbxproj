@@ -13,6 +13,7 @@
 		B5A01117282EF0FC001FD57E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A01115282EF0FC001FD57E /* Main.storyboard */; };
 		B5A01119282EF101001FD57E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A01118282EF101001FD57E /* Assets.xcassets */; };
 		B5A0111C282EF101001FD57E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A0111A282EF101001FD57E /* LaunchScreen.storyboard */; };
+		B5A01124282FABA9001FD57E /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5A01123282FABA9001FD57E /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B5A01118282EF101001FD57E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5A0111B282EF101001FD57E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5A0111D282EF101001FD57E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A01123282FABA9001FD57E /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../../../Downloads/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		B5A0110E282EF0FC001FD57E /* SeeFood */ = {
 			isa = PBXGroup;
 			children = (
+				B5A01123282FABA9001FD57E /* Inceptionv3.mlmodel */,
 				B5A0110F282EF0FC001FD57E /* AppDelegate.swift */,
 				B5A01111282EF0FC001FD57E /* SceneDelegate.swift */,
 				B5A01113282EF0FC001FD57E /* ViewController.swift */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A01114282EF0FC001FD57E /* ViewController.swift in Sources */,
+				B5A01124282FABA9001FD57E /* Inceptionv3.mlmodel in Sources */,
 				B5A01110282EF0FC001FD57E /* AppDelegate.swift in Sources */,
 				B5A01112282EF0FC001FD57E /* SceneDelegate.swift in Sources */,
 			);

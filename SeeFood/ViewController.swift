@@ -19,17 +19,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .camera //.photoLibrary for selecting any photo from user's photo album.
+        imagePicker.allowsEditing = false // true : allows to crop the captured image
     }
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = userPickedImage
+            
+            guard let ciimage = CIImage(image: userPickedImage) else {
+                fatalError("Image can not converted to CIImage")
+            }
+
+            detect(image: ciimage)
         }
         
         imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func detect(image: CIImage){
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
+            fatalError("Loading CoreML Model failed.")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { req, err in
+            guard let results = req.results as? [VNClassificationObservation] else { //this class holds classification observations after our models been processed.
+                fatalError("Model failed to process image.")
+            }
+            print(results)
+
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: image)
+        do {
+            try handler.perform([request])
+        }
+        catch {
+            print(error)
+        }
+        
     }
     
 
